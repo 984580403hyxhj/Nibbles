@@ -1,24 +1,10 @@
-//
-//  ContentView.swift
-//  LightningCatcher
-//
-//  Created by 王天任 on 1/16/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var dataStore = DataStore()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        KnowledgeFeedView()
+            .environmentObject(dataStore)
     }
-}
-
-#Preview {
-    ContentView()
 }

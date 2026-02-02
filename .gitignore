@@ -1,0 +1,29 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+
+# Logs (server-side)
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# Misc
+TROUBLESHOOTING.md
