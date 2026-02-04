@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+
+set timeout 30
+set password "J?mjd!a#79mZ?9m"
+
+spawn ssh root@8.153.92.107 "docker ps -a; echo '---'; docker images | grep lightning"
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    eof
+}

@@ -6,9 +6,38 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		AA000001000000000000000A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD20A7912F194D6E00565F79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA000001000000000000000E /* LightningCatcherShare */;
+			remoteInfo = LightningCatcherShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA000001000000000000000B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA000001000000000000000C /* LightningCatcherShare.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CD20A7992F194D6E00565F79 /* 阅栈.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "阅栈.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA000001000000000000000D /* LightningCatcherShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LightningCatcherShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXBuildFile section */
+		AA000001000000000000000C /* LightningCatcherShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000D /* LightningCatcherShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		D1410A492F2693D1001F889B /* Exceptions for "LightningCatcher" folder in "LightningCatcher" target */ = {
@@ -18,6 +47,36 @@
 			);
 			target = CD20A7982F194D6E00565F79 /* LightningCatcher */;
 		};
+		AA00000100000000000000F1 /* Exceptions for "LightningCatcher" folder in "LightningCatcherShare" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ContentView.swift,
+				Info.plist,
+				KnowledgeFeedView.swift,
+				LightningCatcher.entitlements,
+				LightningCatcherApp.swift,
+				Models.swift,
+				TaskPoller.swift,
+				Theme.swift,
+			);
+			target = AA000001000000000000000E /* LightningCatcherShare */;
+		};
+		AA00000100000000000000F2 /* Exceptions for "LightningCatcherShare" folder in "LightningCatcher" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+				LightningCatcherShare.entitlements,
+				ShareViewController.swift,
+			);
+			target = CD20A7982F194D6E00565F79 /* LightningCatcher */;
+		};
+		AA00000100000000000000F3 /* Exceptions for "LightningCatcherShare" folder in "LightningCatcherShare" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AA000001000000000000000E /* LightningCatcherShare */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -25,14 +84,31 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				D1410A492F2693D1001F889B /* Exceptions for "LightningCatcher" folder in "LightningCatcher" target */,
+				AA00000100000000000000F1 /* Exceptions for "LightningCatcher" folder in "LightningCatcherShare" target */,
 			);
 			path = LightningCatcher;
+			sourceTree = "<group>";
+		};
+		AA000001000000000000001A /* LightningCatcherShare */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AA00000100000000000000F2 /* Exceptions for "LightningCatcherShare" folder in "LightningCatcher" target */,
+				AA00000100000000000000F3 /* Exceptions for "LightningCatcherShare" folder in "LightningCatcherShare" target */,
+			);
+			path = LightningCatcherShare;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CD20A7962F194D6E00565F79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000001000000000000001B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				CD20A79B2F194D6E00565F79 /* LightningCatcher */,
+				AA000001000000000000001A /* LightningCatcherShare */,
 				CD20A79A2F194D6E00565F79 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				CD20A7992F194D6E00565F79 /* 阅栈.app */,
+				AA000001000000000000000D /* LightningCatcherShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,13 +146,16 @@
 				CD20A7952F194D6E00565F79 /* Sources */,
 				CD20A7962F194D6E00565F79 /* Frameworks */,
 				CD20A7972F194D6E00565F79 /* Resources */,
+				AA000001000000000000000B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AA000001000000000000001C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CD20A79B2F194D6E00565F79 /* LightningCatcher */,
+				AA000001000000000000001A /* LightningCatcherShare */,
 			);
 			name = LightningCatcher;
 			packageProductDependencies = (
@@ -82,6 +163,29 @@
 			productName = LightningCatcher;
 			productReference = CD20A7992F194D6E00565F79 /* 阅栈.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AA000001000000000000000E /* LightningCatcherShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA000001000000000000001D /* Build configuration list for PBXNativeTarget "LightningCatcherShare" */;
+			buildPhases = (
+				AA000001000000000000001E /* Sources */,
+				AA000001000000000000001B /* Frameworks */,
+				AA000001000000000000001F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CD20A79B2F194D6E00565F79 /* LightningCatcher */,
+				AA000001000000000000001A /* LightningCatcherShare */,
+			);
+			name = LightningCatcherShare;
+			packageProductDependencies = (
+			);
+			productName = LightningCatcherShare;
+			productReference = AA000001000000000000000D /* LightningCatcherShare.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -94,6 +198,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					CD20A7982F194D6E00565F79 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					AA000001000000000000000E = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -113,12 +220,20 @@
 			projectRoot = "";
 			targets = (
 				CD20A7982F194D6E00565F79 /* LightningCatcher */,
+				AA000001000000000000000E /* LightningCatcherShare */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CD20A7972F194D6E00565F79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000001000000000000001F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +250,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA000001000000000000001E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA000001000000000000001C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA000001000000000000000E /* LightningCatcherShare */;
+			targetProxy = AA000001000000000000000A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CD20A7A22F194D6F00565F79 /* Debug */ = {
@@ -262,6 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LightningCatcher/LightningCatcher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TG5LZBC2A7;
@@ -295,6 +426,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LightningCatcher/LightningCatcher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TG5LZBC2A7;
@@ -323,6 +455,64 @@
 			};
 			name = Release;
 		};
+		AA00000100000000000000E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LightningCatcherShare/LightningCatcherShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TG5LZBC2A7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LightningCatcherShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LightningCatcherShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.LightningCatcher1.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA00000100000000000000E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LightningCatcherShare/LightningCatcherShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TG5LZBC2A7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LightningCatcherShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LightningCatcherShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.LightningCatcher1.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -340,6 +530,15 @@
 			buildConfigurations = (
 				CD20A7A52F194D6F00565F79 /* Debug */,
 				CD20A7A62F194D6F00565F79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000001000000000000001D /* Build configuration list for PBXNativeTarget "LightningCatcherShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA00000100000000000000E1 /* Debug */,
+				AA00000100000000000000E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

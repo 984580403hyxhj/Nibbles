@@ -124,15 +124,18 @@ struct TaskResult: Codable {
 }
 
 class DataStore: ObservableObject {
-    @Published var items: [CapturedItem] = [] { 
-        didSet { 
+    private var isLoading = true
+
+    @Published var items: [CapturedItem] = [] {
+        didSet {
+            guard !isLoading else { return }
             print("📚 [DataStore] items changed, count: \(items.count)")
-            saveAll() 
-        } 
+            saveAll()
+        }
     }
-    @Published var processedArticles: [ProcessedArticle] = [] { didSet { saveAll() } }
-    @Published var knowledgeCards: [KnowledgeCard] = [] { didSet { saveAll() } }
-    @Published var pendingTasks: [PendingTask] = [] { didSet { saveTasks() } }
+    @Published var processedArticles: [ProcessedArticle] = [] { didSet { guard !isLoading else { return }; saveAll() } }
+    @Published var knowledgeCards: [KnowledgeCard] = [] { didSet { guard !isLoading else { return }; saveAll() } }
+    @Published var pendingTasks: [PendingTask] = [] { didSet { guard !isLoading else { return }; saveTasks() } }
     
     // 💡 UI States for AI Pipeline
     @Published var isProcessing = false
@@ -140,18 +143,38 @@ class DataStore: ObservableObject {
     @Published var errorMessage: String? = nil
     
     
-    private let itemsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("captured_items.json")
-    private let articlesPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("processed_articles.json")
-    private let cardsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("knowledge_cards.json")
-    private let tasksPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("pending_tasks.json")
-    
+    private let itemsPath = SharedStorage.capturedItemsPath
+    private let articlesPath = SharedStorage.processedArticlesPath
+    private let cardsPath = SharedStorage.knowledgeCardsPath
+    private let tasksPath = SharedStorage.pendingTasksPath
+
     init() {
+        SharedStorage.migrateIfNeeded()
         loadAll()
         loadTasks()
+        isLoading = false
         print("📊 [Persistence] Loaded: \(items.count) items, \(processedArticles.count) articles, \(knowledgeCards.count) cards, \(pendingTasks.count) tasks")
-        
-        // 💡 FIXED: 不再自动注入 Demo，避免覆盖用户真实数据
-        // 用户可以通过"恢复Demo"按钮手动触发
+    }
+
+    /// 处理 Share Extension 传入的 URL
+    func processSharedURLs(using taskPoller: TaskPoller) {
+        let entries = SharedStorage.dequeueAllURLs()
+        guard !entries.isEmpty else { return }
+
+        for entry in entries {
+            print("📥 [Share] Processing shared URL: \(entry.url)")
+            Task {
+                do {
+                    let taskId = try await taskPoller.submitTask(url: entry.url)
+                    print("✅ [Share] Submitted shared URL, taskId: \(taskId)")
+                } catch {
+                    print("❌ [Share] Failed to submit shared URL: \(error)")
+                    await MainActor.run {
+                        errorMessage = "分享链接处理失败: \(error.localizedDescription)"
+                    }
+                }
+            }
+        }
     }
     
     // 💡 Add a pending task
